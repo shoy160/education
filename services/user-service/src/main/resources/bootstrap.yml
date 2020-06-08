@@ -1,2 +1,50 @@
 server:
   port: 9612
+  undertow:
+    io-threads: 4
+    worker-threads: 20
+    buffer-size: 1024
+    direct-buffers: true
+spring:
+  datasource:
+    url: jdbc:sqlserver://127.0.0.1:1433;databasename=dayeasy_main_v2
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: 123456
+    #type: com.alibaba.druid.pool.DruidDataSource
+    # druid:
+    #   filters: #stat, wall
+    #   initial-size: 5
+    #   min-idle: 5
+    #   max-active: 30
+    #   web-stat-filter:
+    #     enabled: true
+    #     url-pattern: /*
+    #     exclusions: "*.js, *.gif, *.jpg, *.png, *.css, *.ico, /druid/*"
+    #     session-stat-enable: true
+    #     session-stat-max-count: 100000
+    #     profile-enable: true
+    #     principal-session-name: education
+    #     principal-cookie-name: education
+    #   stat-view-servlet:
+    #     enabled: true
+    #     url-pattern: /druid/*
+    #     reset-enable:  true
+    #     login-username: druid
+    #     login-password: 123456
+    #     allow: 127.0.0.1
+    #     deny:
+    #   filter:
+    #     wall:
+    #       enabled: true
+    #       db-type: sqlserver
+    #       config:
+    #         alter-table-allow: false
+    #         truncate-allow: false
+    #         drop-table-allow: false
+    #         none-base-statement-allow: false
+    #         update-where-none-check: true
+    #         select-into-outfile-allow: false
+    #         merge-allow: true
+    #       log-violation: true
+    #       throw-exception: true
