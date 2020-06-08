@@ -16,7 +16,6 @@
         <module>system-service</module>
         <module>user-service</module>
     </modules>
-
     <dependencies>
         <dependency>
             <groupId>org.shay.education</groupId>

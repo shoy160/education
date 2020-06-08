@@ -31,7 +31,6 @@
         <docker.registry.host>http://${docker.registry.url}:5000</docker.registry.host>
         <docker.plugin.version>1.2.0</docker.plugin.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -39,7 +38,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
