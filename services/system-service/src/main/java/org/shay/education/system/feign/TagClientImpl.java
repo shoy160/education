@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sun.istack.internal.Nullable;
+import org.shay.education.BaseClient;
 import org.shay.education.dto.PagedDto;
 import org.shay.education.system.client.TagClient;
 import org.shay.education.system.dto.TagDto;
@@ -27,7 +28,7 @@ import java.util.List;
 @RestController
 @RequestMapping()
 @Scope("prototype")
-public class TagClientImpl implements TagClient {
+public class TagClientImpl extends BaseClient implements TagClient {
 
     @Resource
     private TagService tagService;
@@ -57,13 +58,7 @@ public class TagClientImpl implements TagClient {
 
         List<TagDto> dtoList = new ArrayList<>();
         for (TagTable tag : list) {
-            TagDto dto = new TagDto();
-            dto.setId(tag.getId());
-            dto.setName(tag.getName());
-            dto.setFullPinyin(tag.getFullPinyin());
-            dto.setSimplePinyin(tag.getSimplePinyin());
-            dto.setType(TagType.values()[tag.getType()]);
-            dto.setCount(tag.getCount());
+            TagDto dto = tag.toDto();
             dtoList.add(dto);
         }
         return new PagedDto<>((int) tagPage.getTotal(), dtoList);

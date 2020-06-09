@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
         fallback = TagClientFallback.class
 )
 public interface TagClient {
-    String API_PREFIX = "/tag";
+    String API_PREFIX = Constants.FEIGN_ROUTE_PREFIX + "tag";
 
     /**
      * 添加标签

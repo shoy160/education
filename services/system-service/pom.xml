@@ -11,6 +11,7 @@
     <artifactId>system-service</artifactId>
     <name>${project.artifactId}</name>
     <version>${education.version}</version>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.shay.education</groupId>
@@ -19,5 +20,4 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    <packaging>jar</packaging>
 </project>

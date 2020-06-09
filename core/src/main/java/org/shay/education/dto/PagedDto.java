@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class PagedDto<T extends BaseDto> extends BaseDto {
-    private int total;
+    private long total;
     private List<T> list;
 
     public static <T extends BaseDto> PagedDto<T> paged(List<T> list) {

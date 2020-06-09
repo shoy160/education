@@ -1,8 +1,8 @@
 package org.shay.education.admin;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
-import org.shay.education.EducationApplication;
 import org.shay.education.Constants;
+import org.shay.education.EducationApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**

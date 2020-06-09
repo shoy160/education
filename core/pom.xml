@@ -12,11 +12,15 @@
     <name>${project.artifactId}</name>
     <version>${education.version}</version>
     <packaging>jar</packaging>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
+        </dependency>
+        <!--Test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

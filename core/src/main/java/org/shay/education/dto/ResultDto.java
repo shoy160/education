@@ -1,10 +1,7 @@
 package org.shay.education.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.security.Timestamp;
 
 /**
  * @author shay
@@ -32,17 +29,37 @@ public class ResultDto<T> extends BaseDto {
      */
     private long timestamp;
 
-    public ResultDto(T data) {
+    private ResultDto(T data) {
         this.success = true;
         this.code = 200;
         this.data = data;
         this.timestamp = System.currentTimeMillis();
     }
 
-    public ResultDto(String message, int code) {
+    private ResultDto(String message, int code) {
         this.success = code == 200;
         this.code = code;
         this.message = message;
         this.timestamp = System.currentTimeMillis();
+    }
+
+    private static <T> ResultDto<T> result(ResultCode resultCode) {
+        return new ResultDto<>(resultCode.getMessage(), resultCode.getCode());
+    }
+
+    public static <T> ResultDto<T> success(T data) {
+        return new ResultDto<>(data);
+    }
+
+    public static <T> ResultDto<T> success() {
+        return result(ResultCode.SUCCESS);
+    }
+
+    public static <T> ResultDto<T> fail(int code, String message) {
+        return new ResultDto<>(message, code);
+    }
+
+    public static <T> ResultDto<T> fail(ResultCode resultCode) {
+        return result(resultCode);
     }
 }

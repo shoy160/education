@@ -9,6 +9,8 @@ import java.util.HashMap;
 public interface Constants {
     String APPLICATION_VERSION = "0.0.1";
 
+    String FEIGN_ROUTE_PREFIX = "/service-rpc/";
+
     /**
      * 基础包
      */
@@ -36,17 +38,17 @@ public interface Constants {
 
     HashMap<String, String> NACOS_ADDR = new HashMap<String, String>() {
         {
-            put(MODE_DEV, "192.168.122.128:8848");
+            put(MODE_DEV, "182.151.21.90:8848");
             put(MODE_TEST, "127.0.0.1:8848");
             put(MODE_PROD, "127.0.0.1:8848");
         }
     };
     String NACOS_NAMESPACE = "education";
-    String NACOS_GROUP = "EDUCATION";
+    String NACOS_GROUP = "DEFAULT_GROUP";
 
     HashMap<String, String> SENTINEL_ADDR = new HashMap<String, String>() {
         {
-            put(MODE_DEV, "192.168.122.128:8858");
+            put(MODE_DEV, "182.151.21.90:8858");
             put(MODE_TEST, "127.0.0.1:8848");
             put(MODE_PROD, "127.0.0.1:8848");
         }
@@ -54,7 +56,7 @@ public interface Constants {
 
     HashMap<String, String> ZIPKIN_ADDR = new HashMap<String, String>() {
         {
-            put(MODE_DEV, "192.168.122.128:9411");
+            put(MODE_DEV, "182.151.21.90:9411");
             put(MODE_TEST, "127.0.0.1:9411");
             put(MODE_PROD, "127.0.0.1:9411");
         }
@@ -62,7 +64,7 @@ public interface Constants {
 
     String NACOS_CONFIG_GROUP = "DEFAULT_GROUP";
 
-    String NACOS_CONFIG_PREFIX = "education";
+    String NACOS_CONFIG_PREFIX = "ed";
 
     String NACOS_GROUP_SUFFIX = "-group";
 

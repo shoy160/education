@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Getter;
 import lombok.Setter;
+import org.shay.education.system.dto.TagDto;
+import org.shay.education.system.enums.TagType;
 
 /**
  * @author shay
@@ -28,4 +30,15 @@ public class TagTable extends Model<TagTable> {
     private String simplePinyin;
     @TableField(value = "UsedCount")
     private int count;
+
+    public TagDto toDto() {
+        TagDto dto = new TagDto();
+        dto.setId(getId());
+        dto.setName(getName());
+        dto.setFullPinyin(getFullPinyin());
+        dto.setSimplePinyin(getSimplePinyin());
+        dto.setType(TagType.values()[getType()]);
+        dto.setCount(getCount());
+        return dto;
+    }
 }
