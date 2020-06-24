@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.shay.education.Constants;
-import org.shay.education.dto.PagedDto;
+import org.shay.education.dto.PagedDTO;
 import org.shay.education.test.EducationTest;
 import org.shay.education.test.EducationTestRunner;
 import org.shay.education.user.UserApplication;
@@ -24,7 +24,7 @@ public class UserServiceTest {
 
     @Test
     public void getUserTest() {
-        PagedDto<UserDto> pagedDto = userService.search(1, 10);
+        PagedDTO<UserDto> pagedDto = userService.search(1, 10);
         Assert.assertEquals(pagedDto.getTotal(), 18);
     }
 }

@@ -6,7 +6,7 @@ WORKDIR /publish
 
 EXPOSE 5000
 
-ADD ./target/system-service.jar ./app.jar
+ADD ./target/education-system-service.jar ./app.jar
 
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
 

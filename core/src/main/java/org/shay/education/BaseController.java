@@ -1,7 +1,7 @@
 package org.shay.education;
 
 import org.shay.education.dto.ResultCode;
-import org.shay.education.dto.ResultDto;
+import org.shay.education.dto.ResultDTO;
 
 /**
  * 基础控制器
@@ -11,23 +11,23 @@ import org.shay.education.dto.ResultDto;
  */
 public abstract class BaseController {
 
-    protected <T> ResultDto<T> success() {
-        return ResultDto.success();
+    protected <T> ResultDTO<T> success() {
+        return ResultDTO.success();
     }
 
-    protected <T> ResultDto<T> success(T data) {
-        return ResultDto.success(data);
+    protected <T> ResultDTO<T> success(T data) {
+        return ResultDTO.success(data);
     }
 
-    protected <T> ResultDto<T> fail(ResultCode resultCode) {
-        return ResultDto.fail(resultCode);
+    protected <T> ResultDTO<T> fail(ResultCode resultCode) {
+        return ResultDTO.fail(resultCode);
     }
 
-    private <T> ResultDto<T> fail(String message) {
-        return ResultDto.fail(ResultCode.INTERNAL_SERVER_ERROR.getCode(), message);
+    private <T> ResultDTO<T> fail(String message) {
+        return ResultDTO.fail(ResultCode.INTERNAL_SERVER_ERROR.getCode(), message);
     }
 
-    private <T> ResultDto<T> fail(String message, int code) {
-        return ResultDto.fail(code, message);
+    private <T> ResultDTO<T> fail(String message, int code) {
+        return ResultDTO.fail(code, message);
     }
 }

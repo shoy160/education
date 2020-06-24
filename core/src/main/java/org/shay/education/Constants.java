@@ -39,7 +39,7 @@ public interface Constants {
     HashMap<String, String> NACOS_ADDR = new HashMap<String, String>() {
         {
             put(MODE_DEV, "182.151.21.90:8848");
-            put(MODE_TEST, "127.0.0.1:8848");
+            put(MODE_TEST, "182.151.21.90:8848");
             put(MODE_PROD, "127.0.0.1:8848");
         }
     };
@@ -49,7 +49,7 @@ public interface Constants {
     HashMap<String, String> SENTINEL_ADDR = new HashMap<String, String>() {
         {
             put(MODE_DEV, "182.151.21.90:8858");
-            put(MODE_TEST, "127.0.0.1:8848");
+            put(MODE_TEST, "182.151.21.90:8858");
             put(MODE_PROD, "127.0.0.1:8848");
         }
     };
@@ -57,7 +57,7 @@ public interface Constants {
     HashMap<String, String> ZIPKIN_ADDR = new HashMap<String, String>() {
         {
             put(MODE_DEV, "182.151.21.90:9411");
-            put(MODE_TEST, "127.0.0.1:9411");
+            put(MODE_TEST, "182.151.21.90:9411");
             put(MODE_PROD, "127.0.0.1:9411");
         }
     };

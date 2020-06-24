@@ -2,7 +2,7 @@ package org.shay.education.user.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.shay.education.dto.BaseDto;
+import org.shay.education.dto.BaseDTO;
 
 /**
  * @author shay
@@ -10,7 +10,7 @@ import org.shay.education.dto.BaseDto;
  */
 @Getter
 @Setter
-public class UserDto extends BaseDto {
+public class UserDto extends BaseDTO {
     private long id;
     private String nick;
     private String name;

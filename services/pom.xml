@@ -8,21 +8,16 @@
         <groupId>org.shay.education</groupId>
         <version>0.0.1</version>
     </parent>
-    <artifactId>services</artifactId>
+    <artifactId>education-services</artifactId>
     <name>${project.artifactId}</name>
-    <version>${education.version}</version>
+    <version>0.0.1</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>system-service</module>
         <module>user-service</module>
     </modules>
     <dependencies>
-        <dependency>
-            <groupId>org.shay.education</groupId>
-            <artifactId>core</artifactId>
-            <version>${education.version}</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-alibaba-sentinel -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -95,29 +90,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>${docker.plugin.version}</version>
-                <configuration>
-                    <imageName>${docker.registry.url}/edu/${project.artifactId}:${project.version}</imageName>
-                    <dockerDirectory>${project.basedir}</dockerDirectory>
-                    <dockerHost>${docker.registry.host}</dockerHost>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                    <registryUrl>${docker.registry.url}</registryUrl>
-                    <serverId>${docker.registry.url}</serverId>
-                    <pushImage>true</pushImage>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

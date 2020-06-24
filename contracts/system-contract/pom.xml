@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>contracts</artifactId>
+        <artifactId>education-contracts</artifactId>
         <groupId>org.shay.education</groupId>
         <version>0.0.1</version>
     </parent>
-    <artifactId>system-contract</artifactId>
+    <artifactId>education-system-contract</artifactId>
     <name>${project.artifactId}</name>
     <version>${education.version}</version>
     <packaging>jar</packaging>

@@ -15,11 +15,11 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PagedDto<T extends BaseDto> extends BaseDto {
+public class PagedDTO<T extends BaseDTO> extends BaseDTO {
     private long total;
     private List<T> list;
 
-    public static <T extends BaseDto> PagedDto<T> paged(List<T> list) {
-        return new PagedDto<>(list.size(), list);
+    public static <T extends BaseDTO> PagedDTO<T> paged(List<T> list) {
+        return new PagedDTO<>(list.size(), list);
     }
 }

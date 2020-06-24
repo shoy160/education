@@ -2,7 +2,8 @@ package org.shay.education.system.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.shay.education.dto.BaseDto;
+import org.shay.education.dto.BaseDTO;
+import org.shay.education.enums.NormalStatus;
 import org.shay.education.system.enums.TagType;
 
 /**
@@ -11,11 +12,12 @@ import org.shay.education.system.enums.TagType;
  */
 @Getter
 @Setter
-public class TagDto extends BaseDto {
-    private int id;
+public class TagDTO extends BaseDTO {
+    private Integer id;
     private String name;
     private TagType type;
     private String fullPinyin;
     private String simplePinyin;
-    private int count;
+    private Integer count;
+    private NormalStatus status;
 }

@@ -1,11 +1,9 @@
 package org.shay.education.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.shay.education.dto.PagedDto;
+import org.shay.education.dto.PagedDTO;
 import org.shay.education.user.dto.UserDto;
 import org.shay.education.user.entity.UserTable;
 import org.shay.education.user.mapper.UserMapper;
@@ -22,7 +20,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserTable> implements UserService {
     @Override
-    public PagedDto<UserDto> search(int page, int size) {
+    public PagedDTO<UserDto> search(int page, int size) {
         Page<UserTable> userPage = new Page<>(page, size);
         LambdaQueryWrapper<UserTable> query = new LambdaQueryWrapper<>();
         userPage = page(userPage, query);
@@ -32,6 +30,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserTable> implemen
             UserDto dto = user.toDto();
             dtoList.add(dto);
         }
-        return new PagedDto<>(total, dtoList);
+        return new PagedDTO<>(total, dtoList);
     }
 }

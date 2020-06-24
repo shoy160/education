@@ -3,12 +3,11 @@ package org.shay.education.system.feign;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.sun.istack.internal.Nullable;
 import org.shay.education.BaseClient;
-import org.shay.education.dto.PagedDto;
+import org.shay.education.dto.PagedDTO;
 import org.shay.education.system.client.TagClient;
-import org.shay.education.system.dto.TagDto;
-import org.shay.education.system.dto.TagInputDto;
+import org.shay.education.system.dto.TagDTO;
+import org.shay.education.system.dto.TagInputDTO;
 import org.shay.education.system.entity.TagTable;
 import org.shay.education.system.enums.TagType;
 import org.shay.education.system.service.TagService;
@@ -35,13 +34,13 @@ public class TagClientImpl extends BaseClient implements TagClient {
 
     @Override
     @PostMapping(API_PREFIX)
-    public int addTag(@RequestBody TagInputDto dto) {
+    public int addTag(@RequestBody TagInputDTO dto) {
         return 0;
     }
 
     @Override
     @GetMapping(API_PREFIX)
-    public PagedDto<TagDto> getTags(
+    public PagedDTO<TagDTO> getTags(
             @RequestParam("page") int page,
             @RequestParam("size") int size,
             @RequestParam(name = "type", required = false) TagType type
@@ -56,11 +55,11 @@ public class TagClientImpl extends BaseClient implements TagClient {
 
         List<TagTable> list = tagPage.getRecords();
 
-        List<TagDto> dtoList = new ArrayList<>();
+        List<TagDTO> dtoList = new ArrayList<>();
         for (TagTable tag : list) {
-            TagDto dto = tag.toDto();
+            TagDTO dto = tag.toDto();
             dtoList.add(dto);
         }
-        return new PagedDto<>((int) tagPage.getTotal(), dtoList);
+        return new PagedDTO<>((int) tagPage.getTotal(), dtoList);
     }
 }

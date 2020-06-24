@@ -1,10 +1,9 @@
 package org.shay.education.system.client;
 
-import com.sun.istack.internal.Nullable;
-import org.shay.education.dto.PagedDto;
+import org.shay.education.dto.PagedDTO;
 import org.shay.education.system.client.fallback.TagClientFallback;
-import org.shay.education.system.dto.TagDto;
-import org.shay.education.system.dto.TagInputDto;
+import org.shay.education.system.dto.TagDTO;
+import org.shay.education.system.dto.TagInputDTO;
 import org.shay.education.system.enums.TagType;
 import org.shay.education.Constants;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -33,7 +32,7 @@ public interface TagClient {
      * @return
      */
     @PostMapping(API_PREFIX)
-    int addTag(@RequestBody TagInputDto dto);
+    int addTag(@RequestBody TagInputDTO dto);
 
     /**
      * 获取标签
@@ -44,7 +43,7 @@ public interface TagClient {
      * @return
      */
     @GetMapping(API_PREFIX)
-    PagedDto<TagDto> getTags(
+    PagedDTO<TagDTO> getTags(
             @RequestParam("page") int page,
             @RequestParam("size") int size,
             @RequestParam(name = "type", required = false) TagType type

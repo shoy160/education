@@ -12,6 +12,4 @@
     <name>${project.artifactId}</name>
     <version>${education.version}</version>
     <packaging>jar</packaging>
-
-
 </project>

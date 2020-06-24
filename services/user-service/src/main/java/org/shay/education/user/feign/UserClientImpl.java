@@ -1,7 +1,7 @@
 package org.shay.education.user.feign;
 
 import org.shay.education.BaseClient;
-import org.shay.education.dto.PagedDto;
+import org.shay.education.dto.PagedDTO;
 import org.shay.education.user.client.UserClient;
 import org.shay.education.user.dto.UserDto;
 import org.shay.education.user.service.UserService;
@@ -29,7 +29,7 @@ public class UserClientImpl extends BaseClient implements UserClient {
 
     @Override
     @GetMapping(API_PREFIX)
-    public PagedDto<UserDto> search(
+    public PagedDTO<UserDto> search(
             @RequestParam("page") int page,
             @RequestParam("size") int size
     ) {

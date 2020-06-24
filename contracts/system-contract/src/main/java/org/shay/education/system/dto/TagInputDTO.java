@@ -3,7 +3,7 @@ package org.shay.education.system.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.shay.education.dto.BaseDto;
+import org.shay.education.dto.BaseDTO;
 import org.shay.education.system.enums.TagType;
 
 /**
@@ -13,7 +13,7 @@ import org.shay.education.system.enums.TagType;
 @Getter
 @Setter
 @AllArgsConstructor
-public class TagInputDto extends BaseDto {
+public class TagInputDTO extends BaseDTO {
     private TagType type;
     private String name;
 }

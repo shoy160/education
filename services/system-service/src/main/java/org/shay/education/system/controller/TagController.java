@@ -3,7 +3,7 @@ package org.shay.education.system.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.shay.education.BaseController;
-import org.shay.education.dto.ResultDto;
+import org.shay.education.dto.ResultDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,7 @@ public class TagController extends BaseController {
 
     @GetMapping("hello")
     @ApiOperation("Hello服务")
-    public ResultDto<String> hello(String name) {
+    public ResultDTO<String> hello(String name) {
         return success(String.format("hello %s !", name));
     }
 }

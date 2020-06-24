@@ -8,20 +8,20 @@
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>contracts</artifactId>
+    <artifactId>education-contracts</artifactId>
     <name>${project.artifactId}</name>
-    <version>${education.version}</version>
+    <version>0.0.1</version>
     <packaging>pom</packaging>
     <modules>
         <module>user-contract</module>
         <module>system-contract</module>
-        <module>question-contract</module>
-        <module>paper-contract</module>
+<!--        <module>question-contract</module>-->
+<!--        <module>paper-contract</module>-->
     </modules>
     <dependencies>
         <dependency>
             <groupId>org.shay.education</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>education-core</artifactId>
             <version>${education.version}</version>
             <scope>compile</scope>
         </dependency>

@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.shay.education.system.entity.TagTable;
 
 /**
+ * 标签mapper
+ *
  * @author shay
  * @date 2020/6/8
  */
