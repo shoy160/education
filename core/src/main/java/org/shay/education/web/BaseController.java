@@ -1,4 +1,4 @@
-package org.shay.education;
+package org.shay.education.web;
 
 import org.shay.education.dto.ResultCode;
 import org.shay.education.dto.ResultDTO;

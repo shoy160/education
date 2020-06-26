@@ -2,6 +2,7 @@ package org.shay.education.system.entity;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -21,8 +22,8 @@ import org.shay.education.system.dto.SubjectDTO;
 @TableName("TS_Subject")
 public class SubjectTable extends Model<SubjectTable> {
 
-    @TableId(value = "SubjectID")
-    private String id;
+    @TableId(value = "SubjectID", type = IdType.AUTO)
+    private Integer id;
     /**
      * 科目名称
      */

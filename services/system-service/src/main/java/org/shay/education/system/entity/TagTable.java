@@ -31,7 +31,7 @@ public class TagTable extends Model<TagTable> {
     @TableField(value = "UsedCount")
     private int count;
 
-    public TagDTO toDto() {
+    public TagDTO toDTO() {
         TagDTO dto = new TagDTO();
         dto.setId(getId());
         dto.setName(getName());

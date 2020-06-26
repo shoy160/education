@@ -15,7 +15,7 @@ import org.shay.education.enums.NormalStatus;
 @Setter
 public class SubjectDTO extends BaseDTO {
 
-    private String id;
+    private Integer id;
     /**
      * 科目名称
      */

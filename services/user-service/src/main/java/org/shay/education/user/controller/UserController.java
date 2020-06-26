@@ -3,7 +3,7 @@ package org.shay.education.user.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.shay.education.BaseController;
+import org.shay.education.web.BaseController;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.dto.ResultDTO;
 import org.shay.education.system.client.TagClient;

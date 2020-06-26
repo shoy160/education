@@ -1,6 +1,6 @@
 package org.shay.education.user.feign;
 
-import org.shay.education.BaseClient;
+import org.shay.education.web.BaseClient;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.user.client.UserClient;
 import org.shay.education.user.dto.UserDto;

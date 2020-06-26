@@ -3,13 +3,11 @@ package org.shay.education.system.feign;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.shay.education.BaseClient;
+import org.shay.education.web.BaseClient;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.system.client.QuestionTypeClient;
 import org.shay.education.system.dto.QuestionTypeDTO;
-import org.shay.education.system.dto.SubjectDTO;
 import org.shay.education.system.entity.QuestionTypeTable;
-import org.shay.education.system.entity.SubjectTable;
 import org.shay.education.system.service.QuestionTypeService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
@@ -48,17 +46,6 @@ public class QuestionTypeClientImpl extends BaseClient implements QuestionTypeCl
             @RequestParam("page") int page,
             @RequestParam("size") int size
     ) {
-        IPage<QuestionTypeTable> paged = new Page<>(page, size);
-        QueryWrapper<QuestionTypeTable> wrapper = new QueryWrapper<>();
-
-        paged = service.page(paged, wrapper);
-        List<QuestionTypeTable> list = paged.getRecords();
-
-        List<QuestionTypeDTO> dtoList = new ArrayList<>();
-        for (QuestionTypeTable model : list) {
-            QuestionTypeDTO dto = model.toDTO();
-            dtoList.add(dto);
-        }
-        return new PagedDTO<>((int) paged.getTotal(), dtoList);
+        return service.paged(page, size);
     }
 }

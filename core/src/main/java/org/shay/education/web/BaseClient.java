@@ -1,4 +1,4 @@
-package org.shay.education;
+package org.shay.education.web;
 
 /**
  * @author shay

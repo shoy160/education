@@ -3,7 +3,6 @@ package org.shay.education.system.dto;
 import lombok.Getter;
 import lombok.Setter;
 import org.shay.education.dto.BaseDTO;
-import org.shay.education.enums.NormalStatus;
 import org.shay.education.enums.UserRole;
 import org.shay.education.system.enums.ApplicationType;
 

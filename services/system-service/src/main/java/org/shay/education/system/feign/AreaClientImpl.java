@@ -1,6 +1,6 @@
 package org.shay.education.system.feign;
 
-import org.shay.education.BaseClient;
+import org.shay.education.web.BaseClient;
 import org.shay.education.system.client.AreaClient;
 import org.shay.education.system.dto.AreaDTO;
 import org.shay.education.system.entity.AreaTable;

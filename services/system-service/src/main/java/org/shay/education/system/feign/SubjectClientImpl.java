@@ -3,13 +3,11 @@ package org.shay.education.system.feign;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.shay.education.BaseClient;
+import org.shay.education.web.BaseClient;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.system.client.SubjectClient;
 import org.shay.education.system.dto.SubjectDTO;
-import org.shay.education.system.dto.TagDTO;
 import org.shay.education.system.entity.SubjectTable;
-import org.shay.education.system.entity.TagTable;
 import org.shay.education.system.service.SubjectService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
@@ -48,17 +46,6 @@ public class SubjectClientImpl extends BaseClient implements SubjectClient {
             @RequestParam("page") int page,
             @RequestParam("size") int size
     ) {
-        IPage<SubjectTable> paged = new Page<>(page, size);
-        QueryWrapper<SubjectTable> wrapper = new QueryWrapper<>();
-
-        paged = service.page(paged, wrapper);
-        List<SubjectTable> list = paged.getRecords();
-
-        List<SubjectDTO> dtoList = new ArrayList<>();
-        for (SubjectTable model : list) {
-            SubjectDTO dto = model.toDTO();
-            dtoList.add(dto);
-        }
-        return new PagedDTO<>((int) paged.getTotal(), dtoList);
+        return service.paged(page, size);
     }
 }

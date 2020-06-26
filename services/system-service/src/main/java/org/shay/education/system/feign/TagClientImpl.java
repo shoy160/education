@@ -3,7 +3,7 @@ package org.shay.education.system.feign;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.shay.education.BaseClient;
+import org.shay.education.web.BaseClient;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.system.client.TagClient;
 import org.shay.education.system.dto.TagDTO;
@@ -45,21 +45,6 @@ public class TagClientImpl extends BaseClient implements TagClient {
             @RequestParam("size") int size,
             @RequestParam(name = "type", required = false) TagType type
     ) {
-        IPage<TagTable> tagPage = new Page<>(page, size);
-        QueryWrapper<TagTable> wrapper = new QueryWrapper<>();
-        if (type != null) {
-            wrapper.lambda().eq(TagTable::getType, type.ordinal());
-        }
-
-        tagPage = tagService.page(tagPage, wrapper);
-
-        List<TagTable> list = tagPage.getRecords();
-
-        List<TagDTO> dtoList = new ArrayList<>();
-        for (TagTable tag : list) {
-            TagDTO dto = tag.toDto();
-            dtoList.add(dto);
-        }
-        return new PagedDTO<>((int) tagPage.getTotal(), dtoList);
+        return tagService.paged(page, size, type);
     }
 }

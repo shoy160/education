@@ -11,13 +11,14 @@ import lombok.Setter;
 @Setter
 public class ResultDTO<T> extends BaseDTO {
     /**
-     * 成功标示
-     */
-    private boolean success;
-    /**
      * 状态码
      */
-    private int code;
+    private Integer code;
+
+    /**
+     * 成功标示
+     */
+    private Boolean success;
 
     private String message;
     /**
@@ -27,7 +28,7 @@ public class ResultDTO<T> extends BaseDTO {
     /**
      * 时间戳
      */
-    private long timestamp;
+    private Long timestamp;
 
     private ResultDTO(T data) {
         this.success = true;

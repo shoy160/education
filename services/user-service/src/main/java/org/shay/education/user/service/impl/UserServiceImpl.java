@@ -30,6 +30,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserTable> implemen
             UserDto dto = user.toDto();
             dtoList.add(dto);
         }
-        return new PagedDTO<>(total, dtoList);
+        return new PagedDTO<>((int) total, dtoList);
     }
 }
