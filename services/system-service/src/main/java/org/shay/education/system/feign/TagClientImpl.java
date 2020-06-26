@@ -35,7 +35,12 @@ public class TagClientImpl extends BaseClient implements TagClient {
     @Override
     @PostMapping(API_PREFIX)
     public int addTag(@RequestBody TagInputDTO dto) {
-        return 0;
+        TagTable model = new TagTable();
+        model.setName(dto.getName());
+        model.setType(dto.getType().getValue());
+        model.setCount(0);
+        boolean result = tagService.save(model);
+        return result ? 1 : 0;
     }
 
     @Override
