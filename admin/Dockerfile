@@ -9,7 +9,7 @@ EXPOSE 5000
 ENV EDU_MODE "test"
 ENV EDU_NOCAS_GROUP "EDU_TEST"
 
-ADD ./education-system-service.jar ./app.jar
+ADD ./education-admin.jar ./app.jar
 
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom -Duser.timezone=Asia/Shanghai -Dfile.encoding=utf-8", "-jar", "app.jar"]
 

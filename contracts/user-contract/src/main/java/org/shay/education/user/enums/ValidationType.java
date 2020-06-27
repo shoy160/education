@@ -2,34 +2,39 @@ package org.shay.education.user.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.shay.education.enums.UserRole;
 
 /**
- * 用户状态
+ * 认证类型
  *
  * @author shay
+ * @date 2020/6/27
  */
-
 @Getter
 @AllArgsConstructor
-public enum UserStatus {
+public enum ValidationType {
+
     /**
-     * 正常
+     * 未认证
      */
-    Normal(0, "正常"),
+    None(0, "未认证"),
     /**
-     * 未绑定
+     * 邮箱认证
      */
-    UnBind(2, "未绑定"),
+    Email(1, "邮箱认证"),
     /**
-     * 删除
+     * 手机认证
      */
-    Delete(4, "删除");
+    Mobile(2, "手机认证"),
+    /**
+     * 第三方认证
+     */
+    Third(4, "第三方认证");
+
     private final Integer value;
     private final String name;
 
-    public static UserStatus getEnum(int value) {
-        for (UserStatus bt : values()) {
+    public static ValidationType getEnum(int value) {
+        for (ValidationType bt : values()) {
             if (bt.getValue() == value) {
                 return bt;
             }

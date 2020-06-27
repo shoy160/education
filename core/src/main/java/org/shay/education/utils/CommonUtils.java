@@ -3,6 +3,7 @@ package org.shay.education.utils;
 import org.shay.education.Constants;
 import org.springframework.util.StringUtils;
 
+import java.util.EnumSet;
 import java.util.Properties;
 
 /**
@@ -34,15 +35,7 @@ public class CommonUtils {
         props.setProperty("info.version", Constants.APPLICATION_VERSION);
         props.setProperty("info.desc", appName);
         props.setProperty("spring.main.allow-bean-definition-overriding", "true");
-        props.setProperty("spring.cloud.nacos.discovery.server-addr", Constants.nacosAddr(profile));
-        props.setProperty("spring.cloud.nacos.discovery.namespace", Constants.NACOS_NAMESPACE);
-        props.setProperty("spring.cloud.nacos.discovery.group", Constants.NACOS_GROUP);
-
-        props.setProperty("spring.cloud.nacos.config.server-addr", Constants.nacosAddr(profile));
-        props.setProperty("spring.cloud.nacos.config.namespace", Constants.NACOS_NAMESPACE);
-        props.setProperty("spring.cloud.nacos.config.group", Constants.NACOS_GROUP);
-        props.setProperty("spring.cloud.nacos.config.prefix", appName);
-        props.setProperty("spring.cloud.nacos.config.file-extension", Constants.NACOS_CONFIG_FORMAT);
+        Constants.nacosConfig(props, appName, profile);
 
         props.setProperty("spring.cloud.sentinel.transport.dashboard", Constants.sentinelAddr(profile));
         //开启Sentinel熔断器
@@ -52,5 +45,14 @@ public class CommonUtils {
             //开启spring-boot-starter-actuator
             props.setProperty("management.endpoints.web.exposure.include", "*");
         }
+    }
+
+    public static <T extends Enum<T>> T getEnum(Class<T> clzz, int value) {
+        for (T item : EnumSet.allOf(clzz)) {
+            if (item.ordinal() == value) {
+                return item;
+            }
+        }
+        return null;
     }
 }

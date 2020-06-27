@@ -2,7 +2,7 @@ package org.shay.education.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.shay.education.dto.PagedDTO;
-import org.shay.education.user.dto.UserDto;
+import org.shay.education.user.dto.UserDTO;
 import org.shay.education.user.entity.UserTable;
 
 /**
@@ -18,5 +18,5 @@ public interface UserService extends IService<UserTable> {
      * @param size size
      * @return 用户列表
      */
-    PagedDTO<UserDto> search(int page, int size);
+    PagedDTO<UserDTO> search(int page, int size);
 }

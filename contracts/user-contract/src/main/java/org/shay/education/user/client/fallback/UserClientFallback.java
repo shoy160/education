@@ -2,7 +2,7 @@ package org.shay.education.user.client.fallback;
 
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.user.client.UserClient;
-import org.shay.education.user.dto.UserDto;
+import org.shay.education.user.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class UserClientFallback implements UserClient {
     }
 
     @Override
-    public PagedDTO<UserDto> search(int page, int size) {
+    public PagedDTO<UserDTO> search(int page, int size) {
         logger.info("userClient search fallback");
         return new PagedDTO<>(0, new ArrayList<>());
     }

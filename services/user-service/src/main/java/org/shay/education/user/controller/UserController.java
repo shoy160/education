@@ -10,7 +10,7 @@ import org.shay.education.system.client.TagClient;
 import org.shay.education.system.dto.TagDTO;
 import org.shay.education.system.dto.TagInputDTO;
 import org.shay.education.system.enums.TagType;
-import org.shay.education.user.dto.UserDto;
+import org.shay.education.user.dto.UserDTO;
 import org.shay.education.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,11 +28,11 @@ public class UserController extends BaseController {
 
     @GetMapping("")
     @ApiOperation(value = "用户查询", notes = "用户查询")
-    public ResultDTO<PagedDTO<UserDto>> getUsers(
+    public ResultDTO<PagedDTO<UserDTO>> getUsers(
             @RequestParam("page") int page,
             @RequestParam("size") int size
     ) {
-        PagedDTO<UserDto> pagedDto = userService.search(page, size);
+        PagedDTO<UserDTO> pagedDto = userService.search(page, size);
         return success(pagedDto);
     }
 

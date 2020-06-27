@@ -7,7 +7,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Getter;
 import lombok.Setter;
-import org.shay.education.user.dto.UserDto;
+import org.shay.education.enums.UserRole;
+import org.shay.education.user.dto.UserDTO;
+import org.shay.education.user.enums.UserStatus;
 
 /**
  * @author shay
@@ -19,25 +21,45 @@ import org.shay.education.user.dto.UserDto;
 public class UserTable extends Model<UserTable> {
     @TableId(value = "UserID", type = IdType.AUTO)
     private long id;
+
+    /**
+     * 昵称
+     */
     @TableField(value = "NickName")
     private String nick;
+
+    /**
+     * 姓名
+     */
     @TableField(value = "TrueName")
     private String name;
+
+    /**
+     * 头像
+     */
+    @TableField(value = "HeadPhoto")
+    private String avatar;
+
     @TableField(value = "Mobile")
     private String mobile;
+
     @TableField(value = "Email")
     private String email;
+
     @TableField(value = "SubjectID")
     private int subjectId;
+
     @TableField(value = "UserCode")
     private String code;
+
     @TableField(value = "Role")
     private short role;
+
     @TableField(value = "Status")
     private short status;
 
-    public UserDto toDto() {
-        UserDto dto = new UserDto();
+    public UserDTO toDto() {
+        UserDTO dto = new UserDTO();
         dto.setId(getId());
         dto.setNick(getNick());
         dto.setName(getName());
@@ -45,8 +67,8 @@ public class UserTable extends Model<UserTable> {
         dto.setEmail(getEmail());
         dto.setCode(getCode());
         dto.setSubjectId(getSubjectId());
-        dto.setRole(getRole());
-        dto.setStatus(getStatus());
+        dto.setRole(UserRole.getEnum(getRole()));
+        dto.setStatus(UserStatus.getEnum(getStatus()));
         return dto;
     }
 }

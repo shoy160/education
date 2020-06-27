@@ -3,7 +3,7 @@ package org.shay.education.user.feign;
 import org.shay.education.web.BaseClient;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.user.client.UserClient;
-import org.shay.education.user.dto.UserDto;
+import org.shay.education.user.dto.UserDTO;
 import org.shay.education.user.service.UserService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,7 @@ public class UserClientImpl extends BaseClient implements UserClient {
 
     @Override
     @GetMapping(API_PREFIX)
-    public PagedDTO<UserDto> search(
+    public PagedDTO<UserDTO> search(
             @RequestParam("page") int page,
             @RequestParam("size") int size
     ) {

@@ -1,35 +1,34 @@
-package org.shay.education.user.enums;
+package org.shay.education.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.shay.education.enums.UserRole;
 
 /**
- * 用户状态
+ * 性别
  *
  * @author shay
+ * @date 2020/6/27
  */
-
 @Getter
 @AllArgsConstructor
-public enum UserStatus {
+public enum Gender {
     /**
-     * 正常
+     * 保密
      */
-    Normal(0, "正常"),
+    Secret(0, "保密"),
     /**
-     * 未绑定
+     * 男性
      */
-    UnBind(2, "未绑定"),
+    Male(1, "男性"),
     /**
-     * 删除
+     * 女性
      */
-    Delete(4, "删除");
+    Female(2, "女性");
     private final Integer value;
     private final String name;
 
-    public static UserStatus getEnum(int value) {
-        for (UserStatus bt : values()) {
+    public static Gender getEnum(int value) {
+        for (Gender bt : values()) {
             if (bt.getValue() == value) {
                 return bt;
             }

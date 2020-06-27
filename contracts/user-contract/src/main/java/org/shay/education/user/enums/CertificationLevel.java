@@ -2,34 +2,29 @@ package org.shay.education.user.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.shay.education.enums.UserRole;
 
 /**
- * 用户状态
+ * 认证等级
  *
  * @author shay
+ * @date 2020/6/27
  */
-
 @Getter
 @AllArgsConstructor
-public enum UserStatus {
+public enum CertificationLevel {
     /**
-     * 正常
+     * 未认证
      */
-    Normal(0, "正常"),
+    None(0, "未认证"),
     /**
-     * 未绑定
+     * 官方认证
      */
-    UnBind(2, "未绑定"),
-    /**
-     * 删除
-     */
-    Delete(4, "删除");
+    Official(1, "官方认证");
     private final Integer value;
     private final String name;
 
-    public static UserStatus getEnum(int value) {
-        for (UserStatus bt : values()) {
+    public static CertificationLevel getEnum(int value) {
+        for (CertificationLevel bt : values()) {
             if (bt.getValue() == value) {
                 return bt;
             }

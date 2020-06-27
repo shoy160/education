@@ -1,6 +1,5 @@
 package org.shay.education.system.dto;
 
-import com.sun.istack.internal.Nullable;
 import lombok.Getter;
 import lombok.Setter;
 import org.shay.education.dto.BaseDTO;

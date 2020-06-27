@@ -3,7 +3,7 @@ package org.shay.education.user.client;
 import org.shay.education.Constants;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.user.client.fallback.UserClientFallback;
-import org.shay.education.user.dto.UserDto;
+import org.shay.education.user.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +29,8 @@ public interface UserClient {
      * @return 用户列表
      */
     @GetMapping(API_PREFIX)
-    PagedDTO<UserDto> search(
+    PagedDTO<UserDTO> search(
             @RequestParam("page") int page,
-            @RequestParam("size") int size);
+            @RequestParam("size") int size
+    );
 }

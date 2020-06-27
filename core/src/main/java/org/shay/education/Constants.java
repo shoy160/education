@@ -1,6 +1,7 @@
 package org.shay.education;
 
 import java.util.HashMap;
+import java.util.Properties;
 
 /**
  * @author shay
@@ -45,6 +46,7 @@ public interface Constants {
     };
     String NACOS_NAMESPACE = "education";
     String NACOS_GROUP = "DEFAULT_GROUP";
+    String NACOS_GROUP_TEST = "EDU_TEST";
 
     HashMap<String, String> SENTINEL_ADDR = new HashMap<String, String>() {
         {
@@ -64,8 +66,6 @@ public interface Constants {
 
     String NACOS_CONFIG_GROUP = "DEFAULT_GROUP";
 
-    String NACOS_CONFIG_PREFIX = "ed";
-
     String NACOS_GROUP_SUFFIX = "-group";
 
     String NACOS_CONFIG_FORMAT = "yaml";
@@ -73,14 +73,32 @@ public interface Constants {
     /**
      * nacos addr
      *
-     * @param mode 运模式
-     * @return String
+     * @param props   系统变量
+     * @param appName 应用名
+     * @param mode    运模式
      */
-    static String nacosAddr(String mode) {
+    static void nacosConfig(Properties props, String appName, String mode) {
+        String url, group;
         if (NACOS_ADDR.containsKey(mode)) {
-            return NACOS_ADDR.get(mode);
+            url = NACOS_ADDR.get(mode);
+        } else {
+            url = NACOS_ADDR.get(MODE_DEV);
         }
-        return NACOS_ADDR.get(MODE_DEV);
+        if (MODE_TEST.equals(mode)) {
+            group = NACOS_GROUP_TEST;
+        } else {
+            group = NACOS_GROUP;
+        }
+
+        props.setProperty("spring.cloud.nacos.discovery.server-addr", url);
+        props.setProperty("spring.cloud.nacos.discovery.namespace", NACOS_NAMESPACE);
+        props.setProperty("spring.cloud.nacos.discovery.group", group);
+
+        props.setProperty("spring.cloud.nacos.config.server-addr", url);
+        props.setProperty("spring.cloud.nacos.config.namespace", NACOS_NAMESPACE);
+        props.setProperty("spring.cloud.nacos.config.group", NACOS_CONFIG_GROUP);
+        props.setProperty("spring.cloud.nacos.config.prefix", appName);
+        props.setProperty("spring.cloud.nacos.config.file-extension", NACOS_CONFIG_FORMAT);
     }
 
     /**
