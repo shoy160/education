@@ -1,2 +1,18 @@
 server:
   port: 9651
+spring:
+  application:
+    name: "edu-gateway"
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: "182.151.21.90:8848"
+        namespace: "education"
+        group: "DEFAULT_GROUP"
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true

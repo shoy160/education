@@ -32,7 +32,10 @@ public class SwaggerConfig {
 
     @Bean
     public Docket systemApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        if ("".equals(controllerPackage)) {
+            return new Docket(DocumentationType.SWAGGER_2);
+        }
+        return new Docket(DocumentationType.SWAGGER_12)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(controllerPackage))
