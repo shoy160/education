@@ -1,12 +1,10 @@
 package org.shay.education.system.feign;
 
-import org.shay.education.enums.NormalStatus;
 import org.shay.education.web.BaseClient;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.system.client.TagClient;
 import org.shay.education.system.dto.TagDTO;
 import org.shay.education.system.dto.TagInputDTO;
-import org.shay.education.system.entity.TagTable;
 import org.shay.education.system.enums.TagType;
 import org.shay.education.system.service.TagService;
 import org.springframework.context.annotation.Scope;
@@ -26,20 +24,12 @@ import javax.annotation.Resource;
 public class TagClientImpl extends BaseClient implements TagClient {
 
     @Resource
-    private TagService tagService;
+    private TagService service;
 
     @Override
     @PostMapping(API_PREFIX)
     public boolean addTag(@RequestBody TagInputDTO dto) {
-        TagTable model = new TagTable();
-        model.setName(dto.getName());
-        model.setType(dto.getType().getValue());
-        model.setCount(0);
-        model.setFullPinyin("");
-        model.setSimplePinyin("");
-        model.setStatus(NormalStatus.Normal.getValue());
-        boolean result = tagService.save(model);
-        return result;
+        return service.add(dto);
     }
 
     @Override
@@ -49,6 +39,6 @@ public class TagClientImpl extends BaseClient implements TagClient {
             @RequestParam("size") int size,
             @RequestParam(name = "type", required = false) TagType type
     ) {
-        return tagService.search(page, size, type);
+        return service.search(page, size, type);
     }
 }

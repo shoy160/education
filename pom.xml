@@ -8,6 +8,7 @@
         <module>admin</module>
         <module>service-core</module>
         <module>services</module>
+        <module>gateway</module>
     </modules>
     <groupId>org.shay.education</groupId>
     <artifactId>education</artifactId>
@@ -33,6 +34,7 @@
         <docker.registry.host>http://${docker.registry.url}:5000</docker.registry.host>
         <docker.plugin.version>1.2.0</docker.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <skipTests>true</skipTests>
     </properties>
     <dependencies>
         <dependency>
