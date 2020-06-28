@@ -18,6 +18,12 @@
         <module>user-service</module>
     </modules>
     <dependencies>
+        <dependency>
+            <groupId>org.shay.education</groupId>
+            <artifactId>education-core</artifactId>
+            <version>${education.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-alibaba-sentinel -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -90,4 +96,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
