@@ -1,4 +1,4 @@
-package org.shay.education.system.config;
+package org.shay.education.config;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ public class FeignConfig {
      * 3.HEADRES，除了BASIC以外的还会记录请求和响应的头信息
      * 4.FULL,所有
      *
-     * @return
+     * @return level
      */
     @Bean
     Logger.Level feignLogger() {

@@ -2,8 +2,7 @@ package org.shay.education.system.client;
 
 import org.shay.education.Constants;
 import org.shay.education.dto.PagedDTO;
-import org.shay.education.system.client.fallback.SubjectClientFallback;
-import org.shay.education.system.client.fallback.TagClientFallback;
+import org.shay.education.system.client.fallback.SubjectClientFallbackFactory;
 import org.shay.education.system.dto.SubjectDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(
         value = Constants.APP_NAME_SYSTEM,
-        fallback = SubjectClientFallback.class
+        fallbackFactory = SubjectClientFallbackFactory.class
 )
 public interface SubjectClient {
     String API_PREFIX = Constants.FEIGN_ROUTE_PREFIX + "subject";

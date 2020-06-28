@@ -1,7 +1,7 @@
 package org.shay.education.system.client;
 
 import org.shay.education.dto.PagedDTO;
-import org.shay.education.system.client.fallback.TagClientFallback;
+import org.shay.education.system.client.fallback.TagClientFallbackFactory;
 import org.shay.education.system.dto.TagDTO;
 import org.shay.education.system.dto.TagInputDTO;
 import org.shay.education.system.enums.TagType;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(
         value = Constants.APP_NAME_SYSTEM,
-        fallback = TagClientFallback.class
+        fallbackFactory = TagClientFallbackFactory.class
 )
 public interface TagClient {
     String API_PREFIX = Constants.FEIGN_ROUTE_PREFIX + "tag";
@@ -32,7 +32,7 @@ public interface TagClient {
      * @return
      */
     @PostMapping(API_PREFIX)
-    int addTag(@RequestBody TagInputDTO dto);
+    boolean addTag(@RequestBody TagInputDTO dto);
 
     /**
      * 获取标签

@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 public class TagServiceImpl extends ServiceImpl<TagMapper, TagTable> implements TagService {
     @Override
-    public PagedDTO<TagDTO> paged(int page, int size, TagType type) {
+    public PagedDTO<TagDTO> search(int page, int size, TagType type) {
         IPage<TagTable> tagPage = new Page<>(page, size);
         QueryWrapper<TagTable> wrapper = new QueryWrapper<>();
         if (type != null) {
@@ -38,6 +38,6 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, TagTable> implements 
             TagDTO dto = tag.toDTO();
             dtoList.add(dto);
         }
-        return new PagedDTO<>((int) tagPage.getTotal(), dtoList);
+        return new PagedDTO<>(tagPage.getTotal(), dtoList);
     }
 }

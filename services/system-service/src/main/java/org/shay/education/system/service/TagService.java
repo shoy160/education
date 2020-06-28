@@ -18,7 +18,7 @@ public interface TagService extends IService<TagTable> {
      * @param page page
      * @param size size
      * @param type 类型
-     * @return
+     * @return tags
      */
-    PagedDTO<TagDTO> paged(int page, int size, TagType type);
+    PagedDTO<TagDTO> search(int page, int size, TagType type);
 }

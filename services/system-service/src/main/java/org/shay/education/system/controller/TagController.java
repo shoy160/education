@@ -7,9 +7,7 @@ import lombok.AllArgsConstructor;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.dto.ResultCode;
 import org.shay.education.exception.BusinessException;
-import org.shay.education.system.dto.SubjectDTO;
 import org.shay.education.system.dto.TagDTO;
-import org.shay.education.system.entity.SubjectTable;
 import org.shay.education.system.entity.TagTable;
 import org.shay.education.system.enums.TagType;
 import org.shay.education.system.service.TagService;
@@ -57,7 +55,7 @@ public class TagController extends BaseController {
             @RequestParam(value = "size") int size,
             @RequestParam(value = "type", required = false) TagType type
     ) {
-        PagedDTO<TagDTO> pagedDTO = service.paged(page, size, type);
+        PagedDTO<TagDTO> pagedDTO = service.search(page, size, type);
         return success(pagedDTO);
     }
 }

@@ -1,8 +1,7 @@
 package org.shay.education.system.client;
 
 import org.shay.education.Constants;
-import org.shay.education.system.client.fallback.AreaClientFallback;
-import org.shay.education.system.client.fallback.TagClientFallback;
+import org.shay.education.system.client.fallback.AreaClientFallbackFactory;
 import org.shay.education.system.dto.AreaDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,7 @@ import java.util.List;
 
 @FeignClient(
         value = Constants.APP_NAME_SYSTEM,
-        fallback = AreaClientFallback.class
+        fallbackFactory = AreaClientFallbackFactory.class
 )
 public interface AreaClient {
     String API_PREFIX = Constants.FEIGN_ROUTE_PREFIX + "area";

@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>org.shay.education</groupId>
-            <artifactId>education-core</artifactId>
+            <artifactId>education-service-core</artifactId>
             <version>${education.version}</version>
             <scope>compile</scope>
         </dependency>

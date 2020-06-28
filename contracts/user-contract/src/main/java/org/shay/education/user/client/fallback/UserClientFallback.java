@@ -22,6 +22,6 @@ public class UserClientFallback implements UserClient {
     @Override
     public PagedDTO<UserDTO> search(int page, int size) {
         logger.info("userClient search fallback");
-        return new PagedDTO<>(0, new ArrayList<>());
+        return new PagedDTO<>(0L, new ArrayList<>());
     }
 }

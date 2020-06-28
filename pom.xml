@@ -6,6 +6,7 @@
         <module>core</module>
         <module>contracts</module>
         <module>admin</module>
+        <module>service-core</module>
         <module>services</module>
     </modules>
     <groupId>org.shay.education</groupId>

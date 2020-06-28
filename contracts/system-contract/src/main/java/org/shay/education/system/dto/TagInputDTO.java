@@ -12,7 +12,6 @@ import org.shay.education.system.enums.TagType;
  */
 @Getter
 @Setter
-@AllArgsConstructor
 public class TagInputDTO extends BaseDTO {
     private TagType type;
     private String name;

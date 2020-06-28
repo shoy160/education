@@ -1,4 +1,4 @@
-package org.shay.education.system;
+package org.shay.education;
 
 import org.shay.education.dto.ResultCode;
 import org.shay.education.dto.ResultDTO;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * todo
+ * 全局异常处理
  *
  * @author shay
  * @date 2020/6/25

@@ -32,6 +32,6 @@ public class QuestionTypeServiceImpl extends ServiceImpl<QuestionTypeMapper, Que
             QuestionTypeDTO dto = model.toDTO();
             dtoList.add(dto);
         }
-        return new PagedDTO<>((int) paged.getTotal(), dtoList);
+        return new PagedDTO<>(paged.getTotal(), dtoList);
     }
 }

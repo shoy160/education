@@ -1,16 +1,18 @@
 package org.shay.education.test;
 
 import org.junit.runners.model.InitializationError;
-import org.shay.education.Constants;
-import org.shay.education.EducationApplication;
 import org.shay.education.launcher.LauncherService;
-import org.shay.education.utils.CommonUtils;
+import org.shay.education.utils.ServiceUtils;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ServiceLoader;
 import java.util.stream.Collectors;
+
+import static org.springframework.core.annotation.AnnotationUtils.*;
 
 /**
  * @author shay
@@ -23,13 +25,13 @@ public class EducationTestRunner extends SpringJUnit4ClassRunner {
     }
 
     private void setUpTest(Class<?> clazz) {
-        EducationTest educationTest = AnnotationUtils.getAnnotation(clazz, EducationTest.class);
+        EducationTest educationTest = getAnnotation(clazz, EducationTest.class);
         if (educationTest == null) {
             throw new ExceptionInInitializerError("%s must be @EducationTest");
         }
         String appName = educationTest.appName();
         String profile = educationTest.profile();
-        CommonUtils.setUpProperties(appName, profile);
+        ServiceUtils.setUpProperties(appName, profile);
         if (educationTest.enableLoader()) {
             List<LauncherService> launcherList = new ArrayList<>();
             SpringApplicationBuilder builder = new SpringApplicationBuilder(clazz);

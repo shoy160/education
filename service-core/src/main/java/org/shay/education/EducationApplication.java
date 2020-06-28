@@ -1,7 +1,7 @@
 package org.shay.education;
 
 import org.shay.education.launcher.LauncherService;
-import org.shay.education.utils.CommonUtils;
+import org.shay.education.utils.ServiceUtils;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.*;
@@ -59,7 +59,7 @@ public class EducationApplication {
         String activePros = joinFun.apply(activeProfileList.toArray());
         System.out.println(String.format("----启动中，读取到的环境变量:[%s]，jar地址:[%s]----", activePros, startJarPath));
         
-        CommonUtils.setUpProperties(appName, profile);
+        ServiceUtils.setUpProperties(appName, profile);
         // 加载自定义组件
         List<LauncherService> launcherList = new ArrayList<>();
         ServiceLoader.load(LauncherService.class).forEach(launcherList::add);

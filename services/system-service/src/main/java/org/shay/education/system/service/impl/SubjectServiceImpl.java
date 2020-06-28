@@ -33,6 +33,6 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, SubjectTable>
             SubjectDTO dto = model.toDTO();
             dtoList.add(dto);
         }
-        return new PagedDTO<>((int) paged.getTotal(), dtoList);
+        return new PagedDTO<>(paged.getTotal(), dtoList);
     }
 }

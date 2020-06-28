@@ -38,8 +38,8 @@ public class UserController extends BaseController {
 
     @PostMapping("tag")
     @ApiOperation(value = "添加标签")
-    public ResultDTO<Integer> addTag(@RequestBody TagInputDTO dto) {
-        int result = tagClient.addTag(dto);
+    public ResultDTO<Boolean> addTag(@RequestBody TagInputDTO dto) {
+        boolean result = tagClient.addTag(dto);
         return success(result);
     }
 

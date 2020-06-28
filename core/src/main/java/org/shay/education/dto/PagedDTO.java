@@ -16,10 +16,13 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class PagedDTO<T extends BaseDTO> extends BaseDTO {
-    private Integer total;
+    private Long total;
     private List<T> list;
 
+    public PagedDTO() {
+    }
+
     public static <T extends BaseDTO> PagedDTO<T> paged(List<T> list) {
-        return new PagedDTO<>(list.size(), list);
+        return new PagedDTO<>((long) list.size(), list);
     }
 }
