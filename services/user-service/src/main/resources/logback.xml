@@ -11,18 +11,21 @@
        %m:输出代码中指定的讯息，如log(message)中的message
        %n:输出一个换行符号
    -->
-    <contextName>logback</contextName>
-    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %msg %cyan(%logger{5}).%M\(%F:%L\)%n
-            </pattern>
-        </encoder>
-    </appender>
+    <!--引用默认日志配置-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!--使用默认的控制台日志输出实现-->
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <!--应用名称-->
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="springBoot"/>
+    <!--日志文件保存路径-->
+    <property name="LOG_FILE_PATH" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/logs}"/>
+    <!--LogStash访问host-->
+    <!--    <springProperty name="LOG_STASH_HOST" scope="context" source="logstash.host" defaultValue="192.168.0.231:8610"/>-->
     <!--按体积生成日志，避免服务器磁盘撑死-->
-    <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>logs/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_FILE_PATH}/logs/${APP_NAME}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
             <!-- each file should be at most 200MB, keep 3 days worth of history, but at most 1GB -->
             <maxFileSize>200MB</maxFileSize>
             <maxHistory>3</maxHistory>
@@ -31,7 +34,45 @@
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %msg %cyan(%logger{5}).%M\(%F:%L\)%n
             </pattern>
+            <charset>UTF-8</charset>
         </encoder>
+    </appender>
+    <!--ERROR日志输出到LogStash-->
+    <appender name="LOG_STASH_ERROR" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <destination>192.168.0.231:8610</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>Asia/Shanghai</timeZone>
+                </timestamp>
+                <!--自定义日志输出格式-->
+                <pattern>
+                    <pattern>
+                        {
+                        "project": "edu",
+                        "level": "%level",
+                        "site": "${APP_NAME:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "logger": "%logger",
+                        "msg": "%message",
+                        "exception": "%exception{20}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+        <!--当有多个LogStash服务时，设置访问策略为轮询-->
+        <connectionStrategy>
+            <roundRobin>
+                <connectionTTL>5 minutes</connectionTTL>
+            </roundRobin>
+        </connectionStrategy>
     </appender>
 
     <logger name="org.springframework" level="INFO"/>
@@ -39,8 +80,9 @@
     <logger name="com.netflix" level="INFO"/>
     <logger name="com.alibaba.nacos" level="INFO"/>
 
-    <root level="DEBUG">
-        <appender-ref ref="stdout"/>
-        <appender-ref ref="logFile"/>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <!--        <appender-ref ref="LOG_FILE"/>-->
+        <appender-ref ref="LOG_STASH_ERROR"/>
     </root>
 </configuration>
