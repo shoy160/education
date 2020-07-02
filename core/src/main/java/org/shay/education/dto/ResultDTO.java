@@ -44,6 +44,10 @@ public class ResultDTO<T> extends BaseDTO {
         this.timestamp = System.currentTimeMillis();
     }
 
+    private static <T> ResultDTO<T> result(ResultCode resultCode, String message) {
+        return new ResultDTO<>(message, resultCode.getCode());
+    }
+
     private static <T> ResultDTO<T> result(ResultCode resultCode) {
         return new ResultDTO<>(resultCode.getMessage(), resultCode.getCode());
     }
@@ -62,5 +66,9 @@ public class ResultDTO<T> extends BaseDTO {
 
     public static <T> ResultDTO<T> fail(ResultCode resultCode) {
         return result(resultCode);
+    }
+
+    public static <T> ResultDTO<T> fail(ResultCode resultCode, String message) {
+        return result(resultCode, message);
     }
 }

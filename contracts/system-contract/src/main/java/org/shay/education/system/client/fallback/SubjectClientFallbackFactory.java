@@ -1,6 +1,7 @@
 package org.shay.education.system.client.fallback;
 
 import feign.hystrix.FallbackFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.system.client.SubjectClient;
 import org.shay.education.system.dto.SubjectDTO;
@@ -13,17 +14,13 @@ import org.springframework.stereotype.Component;
  *
  * @author shay
  */
+@Slf4j
 @Component
 public class SubjectClientFallbackFactory implements FallbackFactory<SubjectClient> {
-    private final Logger logger;
-
-    public SubjectClientFallbackFactory() {
-        logger = LoggerFactory.getLogger(SubjectClientFallbackFactory.class);
-    }
 
     @Override
     public SubjectClient create(Throwable cause) {
-        logger.error("subject fallback", cause);
+        log.error("subject fallback", cause);
         return new SubjectClient() {
             @Override
             public SubjectDTO get(String id) {

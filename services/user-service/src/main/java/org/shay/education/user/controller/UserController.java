@@ -3,6 +3,7 @@ package org.shay.education.user.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.shay.education.user.request.TagCreateRequest;
 import org.shay.education.web.BaseController;
 import org.shay.education.dto.PagedDTO;
 import org.shay.education.dto.ResultDTO;
@@ -13,6 +14,8 @@ import org.shay.education.system.enums.TagType;
 import org.shay.education.user.dto.UserDTO;
 import org.shay.education.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author shay
@@ -38,7 +41,10 @@ public class UserController extends BaseController {
 
     @PostMapping("tag")
     @ApiOperation(value = "添加标签")
-    public ResultDTO<Boolean> addTag(@RequestBody TagInputDTO dto) {
+    public ResultDTO<Boolean> addTag(@RequestBody @Valid TagCreateRequest request) {
+        TagInputDTO dto = new TagInputDTO();
+        dto.setType(request.getType());
+        dto.setName(request.getName());
         boolean result = tagClient.addTag(dto);
         return success(result);
     }

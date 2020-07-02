@@ -2,6 +2,7 @@ package org.shay.education.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -15,12 +16,10 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class PagedDTO<T extends BaseDTO> extends BaseDTO {
     private Long total;
     private List<T> list;
-
-    public PagedDTO() {
-    }
 
     public static <T extends BaseDTO> PagedDTO<T> paged(List<T> list) {
         return new PagedDTO<>((long) list.size(), list);
